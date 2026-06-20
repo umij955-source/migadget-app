@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiGadget App</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+header{
+background:#007bff;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+nav{
+background:#0056b3;
+padding:10px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+nav button{
+padding:10px 15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+background:white;
+font-weight:bold;
+}
+
+.container{
+padding:20px;
+}
+
+.page{
+display:none;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+.active{
+display:block;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.btn{
+background:#007bff;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.card-container{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.card{
+width:250px;
+background:#fff;
+border-radius:10px;
+padding:15px;
+box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+ul{
+padding-left:20px;
+}
+
+footer{
+margin-top:20px;
+padding:15px;
+text-align:center;
+background:#333;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>MiGadget App</h1>
+<p>Aplikasi Penjualan Gadget Modern</p>
+</header>
+
+<nav>
+<button onclick="showPage('login')">Login</button>
+<button onclick="showPage('dashboard')">Dashboard</button>
+<button onclick="showPage('produk')">Katalog Produk</button>
+<button onclick="showPage('keranjang')">Keranjang</button>
+<button onclick="showPage('profil')">Profil</button>
+<button onclick="showPage('tentang')">Tentang</button>
+</nav>
+
+<div class="container">
+
+<!-- LOGIN -->
+<div id="login" class="page active">
+<h2>Login</h2>
+<input type="text" placeholder="Username">
+<input type="password" placeholder="Password">
+<button class="btn" onclick="alert('Login Berhasil')">Masuk</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="page">
+<h2>Dashboard</h2>
+<br>
+<p>Selamat datang di MiGadget App.</p>
+<p>Aplikasi penjualan gadget yang memudahkan pelanggan membeli produk elektronik secara online.</p>
+
+<br>
+
+<h3>Ringkasan</h3>
+<ul>
+<li>Total Produk : 100+</li>
+<li>Pelanggan Aktif : 500+</li>
+<li>Transaksi Berhasil : 1000+</li>
+</ul>
+</div>
+
+<!-- PRODUK -->
+<div id="produk" class="page">
+<h2>Katalog Produk</h2>
+
+<div class="card-container">
+
+<div class="card">
+<img src="https://via.placeholder.com/250x150">
+<h3>Smartphone Android</h3>
+<p>Rp 3.500.000</p>
+<button class="btn" onclick="tambahKeranjang('Smartphone Android')">
+Tambah
+</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/250x150">
+<h3>Smartwatch</h3>
+<p>Rp 750.000</p>
+<button class="btn" onclick="tambahKeranjang('Smartwatch')">
+Tambah
+</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/250x150">
+<h3>Headset Bluetooth</h3>
+<p>Rp 250.000</p>
+<button class="btn" onclick="tambahKeranjang('Headset Bluetooth')">
+Tambah
+</button>
+</div>
+
+</div>
+</div>
+
+<!-- KERANJANG -->
+<div id="keranjang" class="page">
+<h2>Keranjang Belanja</h2>
+<br>
+<ul id="listKeranjang">
+<li>Belum ada produk.</li>
+</ul>
+</div>
+
+<!-- PROFIL -->
+<div id="profil" class="page">
+<h2>Profil Pengguna</h2>
+<br>
+
+<p><b>Nama :</b> Mila</p>
+<p><b>Email :</b> mila@gmail.com</p>
+<p><b>Status :</b> Pelanggan Aktif</p>
+
+<br>
+
+<button class="btn">Edit Profil</button>
+</div>
+
+<!-- TENTANG -->
+<div id="tentang" class="page">
+<h2>Tentang MiGadget App</h2>
+
+<br>
+
+<p>
+MiGadget App merupakan aplikasi penjualan gadget
+yang dikembangkan oleh Mila Tech Store.
+Aplikasi ini menyediakan berbagai produk elektronik
+seperti smartphone, aksesoris, smartwatch,
+dan perangkat digital lainnya.
+</p>
+
+<br>
+
+<h3>Fitur Utama</h3>
+<ul>
+<li>Login Pengguna</li>
+<li>Katalog Produk</li>
+<li>Keranjang Belanja</li>
+<li>Checkout Pembayaran</li>
+<li>Riwayat Transaksi</li>
+</ul>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 MiGadget App - Mila Tech Store
+</footer>
+
+<script>
+function showPage(pageId){
+
+let pages=document.querySelectorAll('.page');
+
+pages.forEach(page=>{
+page.classList.remove('active');
+});
+
+document.getElementById(pageId).classList.add('active');
+}
+
+function tambahKeranjang(namaProduk){
+
+let list=document.getElementById('listKeranjang');
+
+if(list.innerHTML.includes('Belum ada produk')){
+list.innerHTML='';
+}
+
+let item=document.createElement('li');
+item.textContent=namaProduk;
+
+list.appendChild(item);
+
+alert(namaProduk + ' berhasil ditambahkan ke keranjang');
+}
+</script>
+
+</body>
+</html>
